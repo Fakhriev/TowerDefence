@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private MovePoints MovePoints;
 
     [Header("Spawner Parametres")]
+    [SerializeField] private float enemyAmountToSpawn;
     [SerializeField] private float startTimer;
     [SerializeField] private float spawnInterval;
 
@@ -39,6 +40,10 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator RepeatSpawnEnemyAfterInterval()
     {
         yield return new WaitForSeconds(spawnInterval);
-        SpawnEnemy();
+
+        if(spawnedEnemiesList.Count < enemyAmountToSpawn)
+        {
+            SpawnEnemy();
+        }
     }
 }
