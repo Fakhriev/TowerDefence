@@ -12,7 +12,7 @@ public class TowerFoundation : MonoBehaviour
             SetupFoundationComponents();
     }
 
-    private void OnMouseDown()
+    private void OnMouseUp()
     {
         TowerBuildEvents.InvokeOnTowerFoundationClickEvent(this.foundation);
     }

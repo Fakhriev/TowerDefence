@@ -3,6 +3,7 @@
 public class TowerBuildEvents : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private UIModalsController UIModalsController;
     [SerializeField] private TowerBuildingUI TowerBuildingUI;
 
     public static TowerBuildEvents Instance { get { return instance; } }
@@ -16,18 +17,14 @@ public class TowerBuildEvents : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        OnTowerFoundationClick += OpenBuildMenu;
     }
 
-    private void Start()
-    {
-        OnTowerFoundationClick += ShowTowersBuildingUI;
-    }
-
-    private void ShowTowersBuildingUI(Foundation foundation)
+    private void OpenBuildMenu(Foundation foundation)
     {
         this.foundation = foundation;
-
-        TowerBuildingUI.StartAnimation(UIAnumationType.Show);
+        UIModalsController.OpenBuildMenu(foundation.position);
     }
 
     public static void InvokeOnTowerFoundationClickEvent(Foundation foundation)
