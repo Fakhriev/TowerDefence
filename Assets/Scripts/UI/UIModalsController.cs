@@ -1,29 +1,60 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class UIModalsController : MonoBehaviour
 {
-    [SerializeField] private GameObject BuildMenu;
-    [SerializeField] private Transform buildMenuParent;
-    [SerializeField] private Camera mainCamera;
+    [Header("UI Elements")]
+    [SerializeField] private GameObject buildMenu;
+    [SerializeField] private GameObject upgradeMenu;
 
-    public GameObject createdUIElement;
+    [Header("Prefabs For Create")]
+    [SerializeField] private GameObject BuildMenuPrefab;
+    [SerializeField] private GameObject UpgradeMenuPrefab;
+
+    [Header("UI Parent")]
+    [SerializeField] private Transform buildMenuParent;
+
+    [Header("Main Camera")]
+    [SerializeField] private Camera mainCamera;
 
     public void OpenBuildMenu(Vector3 position)
     {
-        if (createdUIElement != null)
-            Destroy(createdUIElement);
+        if (buildMenu == null)
+        {
+            Debug.LogWarning("BuildMenu is Null");
+            return;
+        }
 
-        createdUIElement = Instantiate(BuildMenu, buildMenuParent);
-        createdUIElement.transform.position = mainCamera.WorldToScreenPoint(position);
+        if(buildMenu.transform.position == mainCamera.WorldToScreenPoint(position))
+        {
+            Debug.Log("BuildMenu position already on it.");
+            return;
+        }
+
+        buildMenu.transform.position = mainCamera.WorldToScreenPoint(position);
+        buildMenu.SetActive(true);
     }
+
+    public void OpenUpgradeMenu(Vector3 position)//Also Tower Variation
+    {
+        if(upgradeMenu == null)
+        {
+            Debug.LogWarning("UpgradeMenu is Null");
+            return;
+        }
+
+        if (upgradeMenu.transform.position == mainCamera.WorldToScreenPoint(position))
+        {
+            Debug.Log("UpgradeMenu position already on it.");
+            return;
+        }
+
+        upgradeMenu.transform.position = mainCamera.WorldToScreenPoint(position);
+        upgradeMenu.SetActive(true);
+    }    
 
     public void CloseUIElement()
     {
-        if (createdUIElement == null)
-            return;
-
-        Destroy(createdUIElement);
+        buildMenu?.SetActive(false);
+        upgradeMenu?.SetActive(false);
     }
 }

@@ -6,6 +6,9 @@ public class TowerFoundation : MonoBehaviour
     [SerializeField] private bool isNeedToSetupFoundationOnAwake;
     [SerializeField] private Foundation foundation;
 
+    [Header("Tower Components")]
+    [SerializeField] private Transform towerParent;
+
     private void Start()
     {
         if(isNeedToSetupFoundationOnAwake == true)

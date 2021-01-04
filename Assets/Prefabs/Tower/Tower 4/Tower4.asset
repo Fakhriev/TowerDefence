@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a0c1955b756b8644b017faed2eeefda, type: 3}
+  m_Name: Tower4
+  m_EditorClassIdentifier: 
+  towerData:
+    type: 3
+    buildCost: 125
+    levelsArray:
+    - level: 1
+      meshPrefab: {fileID: 571825701787447816, guid: bfa1e0c11d2d8374a856410d3d058fa7, type: 3}
+      upgradeToNextLevelCost: 75
+      stats:
+        damage: 90
+        attacksInSecond: 1
+        range: 13
+    - level: 2
+      meshPrefab: {fileID: 8327630984749257414, guid: 2509faedaf5de07439943eca113f303e, type: 3}
+      upgradeToNextLevelCost: 90
+      stats:
+        damage: 100
+        attacksInSecond: 3
+        range: 15
