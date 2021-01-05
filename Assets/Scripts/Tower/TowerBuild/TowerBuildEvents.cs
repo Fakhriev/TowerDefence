@@ -14,8 +14,8 @@ public class TowerBuildEvents : MonoBehaviour
     public delegate void MethodContainerWtihFoundation(Foundation Foundation);
     public event MethodContainerWtihFoundation OnTowerFoundationClick;
 
-    public delegate void MethodContainerWtihTowerDatSO(TowerData_SO TowerDataSO);
-    public event MethodContainerWtihTowerDatSO OnTowerBuild;
+    public delegate void MethodContainerWtihTowerDataSO(TowerData_SO TowerDataSO);
+    public event MethodContainerWtihTowerDataSO OnTowerBuild;
 
     private Foundation foundation;
 
