@@ -11,10 +11,19 @@ public class UIModalsController : MonoBehaviour
     [SerializeField] private GameObject UpgradeMenuPrefab;
 
     [Header("UI Parent")]
-    [SerializeField] private Transform buildMenuParent;
+    [SerializeField] private Transform menuParent;
 
     [Header("Main Camera")]
     [SerializeField] private Camera mainCamera;
+
+    private void Start()
+    {
+        buildMenu = Instantiate(BuildMenuPrefab, menuParent);
+        buildMenu.SetActive(false);
+
+        upgradeMenu = Instantiate(UpgradeMenuPrefab, menuParent);
+        upgradeMenu.SetActive(false);
+    }
 
     public void OpenBuildMenu(Vector3 position)
     {

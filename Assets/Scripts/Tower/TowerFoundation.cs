@@ -6,9 +6,6 @@ public class TowerFoundation : MonoBehaviour
     [SerializeField] private bool isNeedToSetupFoundationOnAwake;
     [SerializeField] private Foundation foundation;
 
-    [Header("Tower Components")]
-    [SerializeField] private Transform towerParent;
-
     private void Start()
     {
         if(isNeedToSetupFoundationOnAwake == true)
@@ -23,6 +20,7 @@ public class TowerFoundation : MonoBehaviour
     public void SetupFoundationComponents()
     {
         foundation.transform = transform;
+        foundation.towerParent = gameObject.transform.Find("TowerParent");
         foundation.position = transform.position;
 
         foundation.boxCollider = GetComponent<BoxCollider>();
@@ -35,8 +33,19 @@ public class TowerFoundation : MonoBehaviour
 public class Foundation
 {
     public Transform transform;
+    public Transform towerParent;
     public Vector3 position;
 
     public BoxCollider boxCollider;
     public GameObject meshGO;
+
+    public void Deactivate()
+    {
+        boxCollider.enabled = false;
+    }
+
+    public void Activate()
+    {
+        boxCollider.enabled = true;
+    }
 }
