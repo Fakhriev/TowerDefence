@@ -27,6 +27,12 @@ public class Tower : MonoBehaviour
         TowerUpgrade.Upgrade();
     }
 
+    public void Sell()
+    {
+        myFoundation.Activate();
+        Destroy(gameObject);
+    }
+
     public TowerComponents TowerComponenets
     {
         get

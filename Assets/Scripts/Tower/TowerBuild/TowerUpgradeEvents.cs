@@ -44,6 +44,7 @@ public class TowerUpgradeEvents : MonoBehaviour
 
     private void SellTower()
     {
+        towerToUpgrade.Sell();
 
         CloseUIElements();
     }

@@ -20,6 +20,6 @@ public class UpgradeMenu : MonoBehaviour
 
     private void SellTower()
     {
-
+        TowerUpgradeEvents.InvokeOnSellTowerEvent();
     }
 }

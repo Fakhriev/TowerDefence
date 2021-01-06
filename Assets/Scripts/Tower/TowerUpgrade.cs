@@ -6,6 +6,7 @@ public class TowerUpgrade : MonoBehaviour
     [Header("References")]
     [SerializeField] private Tower Tower;
     [SerializeField] private TowerTargetSystem TowerTargetSystem;
+    [SerializeField] private TowerAttack TowerAttack;
 
     private GameObject towerMeshGO;
     private Transform shootingPosition;
@@ -13,17 +14,21 @@ public class TowerUpgrade : MonoBehaviour
     private TowerOneLevel towerLevel;
     private int level;
 
-    private bool IsCanBeUpgraded()
+    private void OnMouseUp()
     {
-        if (Array.Find(Tower.MyTowerData.LevelsArray, levelInArray => levelInArray.Level == (level + 1) ) == null)
-        {
-            //Debug.Log("TowerUpgrade: IsCanBeUpgraded(): Have not this Level in LevelsArray");
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        TowerUpgradeEvents.InvokeOnTowerClickEvent(Tower);
+
+        //Debug.Log("TowerMenu: OnMouseUp");
+    }
+
+    private void SetAllParametres()
+    {
+        SetupTowerLevel();
+
+        SetupMesh();
+        SetupStats();
+
+        SetupShootingPosition();
     }
 
     private void SetupTowerLevel()
@@ -36,22 +41,31 @@ public class TowerUpgrade : MonoBehaviour
         towerMeshGO = Instantiate(towerLevel.MeshPrefab, Tower.TowerComponenets.MeshParent);
     }
 
-    private void SetupShootingPosition()
-    {
-        TowerMeshPrefab towerMesh = towerMeshGO.GetComponent<TowerMeshPrefab>();
-        shootingPosition = towerMesh.ShootingPosition;
-    }
-
     private void SetupStats()
     {
         TowerTargetSystem.SetupRange(towerLevel.Stats.Range);
+
+        TowerAttack.SetAttackSpeed(towerLevel.Stats.AttacksInSecond);
+        //TowerAttack.SetArrowPrefab(Tower.MyTowerData.ArrowPrefab);
     }
 
-    private void OnMouseUp()
+    private void SetupShootingPosition()
     {
-        TowerUpgradeEvents.InvokeOnTowerClickEvent(Tower);
-        
-        //Debug.Log("TowerMenu: OnMouseUp");
+        TowerMeshPrefab towerMesh = towerMeshGO.GetComponent<TowerMeshPrefab>();
+        TowerAttack.SetShootingPosition(towerMesh.ShootingPosition);
+    }
+
+    private bool IsCanBeUpgraded()
+    {
+        if (Array.Find(Tower.MyTowerData.LevelsArray, levelInArray => levelInArray.Level == (level + 1)) == null)
+        {
+            //Debug.Log("TowerUpgrade: IsCanBeUpgraded(): Have not this Level in LevelsArray");
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     public void Upgrade()
@@ -65,19 +79,13 @@ public class TowerUpgrade : MonoBehaviour
         level++;
         Destroy(towerMeshGO);
 
-        SetupTowerLevel();
-
-        SetupMesh();
-        SetupStats();
+        SetAllParametres();
     }
 
     public void SetupTowerLevelOne()
     {
         level = 1;
 
-        SetupTowerLevel();
-
-        SetupMesh();
-        SetupStats();
+        SetAllParametres();
     }
 }

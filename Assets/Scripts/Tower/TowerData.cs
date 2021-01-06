@@ -10,6 +10,9 @@ public class TowerData
     [Header("Cost")]
     [SerializeField] private int buildCost;
 
+    [Header("Arrow Prefab")]
+    [SerializeField] private GameObject arrowPrefab;
+
     [Header("Tower Levels")]
     [SerializeField] private TowerOneLevel[] levelsArray;
 
@@ -26,6 +29,14 @@ public class TowerData
         get
         {
             return buildCost;
+        }
+    }
+
+    public GameObject ArrowPrefab
+    {
+        get
+        {
+            return arrowPrefab;
         }
     }
 
@@ -93,7 +104,7 @@ public class TowerOneLevel
 public class TowerStats
 {
     [Range(1, 100)] [SerializeField] private int damage = 1;
-    [Range(1, 20)] [SerializeField] private int attacksInSecond = 1;
+    [Range(0.1f, 10)] [SerializeField] private float attacksInSecond = 1;
     [Range(1, 15)] [SerializeField] private int range = 1;
 
     public int Damage
@@ -104,7 +115,7 @@ public class TowerStats
         }
     }
 
-    public int AttacksInSecond
+    public float AttacksInSecond
     {
         get
         {

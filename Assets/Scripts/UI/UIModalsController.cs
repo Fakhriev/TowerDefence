@@ -35,8 +35,8 @@ public class UIModalsController : MonoBehaviour
 
         if(buildMenu.transform.position == mainCamera.WorldToScreenPoint(position))
         {
-            Debug.Log("BuildMenu position already on it.");
-            return;
+            //Debug.Log("BuildMenu position already on it.");
+            //return;
         }
 
         buildMenu.transform.position = mainCamera.WorldToScreenPoint(position);
@@ -53,8 +53,8 @@ public class UIModalsController : MonoBehaviour
 
         if (upgradeMenu.transform.position == mainCamera.WorldToScreenPoint(position))
         {
-            Debug.Log("UpgradeMenu position already on it.");
-            return;
+            //Debug.Log("UpgradeMenu position already on it.");
+            //return;
         }
 
         upgradeMenu.transform.position = mainCamera.WorldToScreenPoint(position);

@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 5171196242220447272}
   - component: {fileID: 3670505370286497786}
   - component: {fileID: 3020387295916281206}
+  - component: {fileID: 6875411250824158563}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -144,6 +145,7 @@ Transform:
   m_Children:
   - {fileID: 3670505369385903810}
   - {fileID: 6738051045332098343}
+  - {fileID: 8084610181293176802}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -191,6 +193,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tower: {fileID: 3670505370286497786}
   TowerTargetSystem: {fileID: 8962465479709435555}
+  TowerAttack: {fileID: 6875411250824158563}
+--- !u!114 &6875411250824158563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3670505370286497787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af136f5c832b1514c9ed189d5d0876dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultArrowPrefab: {fileID: 951803934838427668, guid: 4c1bc505da0c4854597432ca3e24e8a9, type: 3}
+  arrowsPull: {fileID: 8084610181293176802}
+  arrowsInPull: 10
+  currentEnemyTarget: {fileID: 0}
+  needToAttack: 0
 --- !u!1 &5874465506044678908
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,6 +307,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootinPosition: {fileID: 3670505368847220073}
+--- !u!1 &6830589529494184577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8084610181293176802}
+  m_Layer: 0
+  m_Name: ArrowsPull
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8084610181293176802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6830589529494184577}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3670505370286497785}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8595398922719099779
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,4 +394,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddf259753387ff743bd7414bcbd1c93b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TowerAttack: {fileID: 6875411250824158563}
   sphereCollider: {fileID: 7634761300698701573}
