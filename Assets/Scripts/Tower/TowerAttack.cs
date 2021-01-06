@@ -16,23 +16,12 @@ public class TowerAttack : MonoBehaviour
     private float attackSpeed;
     private Transform shootingPosition;
 
-    public Enemy currentEnemyTarget;// To Private
-    public bool needToAttack;// To Delete
-
+    private Enemy currentEnemyTarget;
     private Arrow[] arrowPull = new Arrow[0];
 
     private void Start()
     {
         CreateArrowsPull();
-    }
-
-    private void Update()
-    {
-        if(needToAttack == true)
-        {
-            SetTarget(currentEnemyTarget);
-            needToAttack = false;
-        }
     }
 
     private void CreateArrowsPull()
