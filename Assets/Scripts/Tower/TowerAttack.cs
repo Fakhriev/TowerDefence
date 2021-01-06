@@ -13,6 +13,7 @@ public class TowerAttack : MonoBehaviour
     [Header("Tower Attack Parametres")]
     [SerializeField] private int arrowsInPull;
 
+    private int damage;
     private float attackSpeed;
     private Transform shootingPosition;
 
@@ -33,7 +34,7 @@ public class TowerAttack : MonoBehaviour
             GameObject createdArrow = Instantiate(defaultArrowPrefab, arrowsPull);
             
             Arrow arrow = createdArrow.GetComponent<Arrow>();
-            arrow.SetArrow(this);
+            arrow.SetArrow(this, damage);
 
             arrowList.Add(arrow);
         }
@@ -63,9 +64,10 @@ public class TowerAttack : MonoBehaviour
     }
 
 
-    public void SetAttackSpeed(float attacksInSecond)
+    public void SetAttacksSpeedAndDamage(float attacksInSecond, int attackDamage)
     {
         attackSpeed = 1 / attacksInSecond;
+        damage = attackDamage;
         //Debug.Log($"My attack speed is {attackSpeed}. Attacks in second: {attacksInSecond}");
     }
 

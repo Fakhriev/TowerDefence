@@ -34,8 +34,7 @@ public class TowerTargetSystem : MonoBehaviour
 
         if (currentEnemyTarget == null)
         {
-            currentEnemyTarget = enemyGO.GetComponent<Enemy>();
-            SetTargetToAttackSystem();
+            SetTargetToAttackSystem(enemyGO);
         }
     }
 
@@ -45,16 +44,22 @@ public class TowerTargetSystem : MonoBehaviour
 
         if (currentEnemyTarget.gameObject == enemyGO)
         {
+            currentEnemyTarget.OnDie -= CurrentTargetIsDie;
             currentEnemyTarget = null;
-            TowerAttack.StopShooting();
 
-            if (enemiesInRange.Count > 0)
-                SetClosestEnemyAsTarget();
+            TowerAttack.StopShooting();
+            SetClosestEnemyAsTarget();
         }
     }
 
     private void SetClosestEnemyAsTarget()
     {
+        if (enemiesInRange.Count == 0)
+        {
+            //Debug.Log("Tower Target System: No Enemy In Range");
+            return;
+        }
+
         GameObject enemyGO = enemiesInRange[0];
 
         foreach(GameObject enemyInList in enemiesInRange)
@@ -65,13 +70,25 @@ public class TowerTargetSystem : MonoBehaviour
             }
         }
 
-        currentEnemyTarget = enemyGO.GetComponent<Enemy>();
-        SetTargetToAttackSystem();
+        SetTargetToAttackSystem(enemyGO);
     }
 
-    private void SetTargetToAttackSystem()
+    private void CurrentTargetIsDie()
     {
+        RemoveEnemyFromList(currentEnemyTarget.gameObject);
+    }
+
+    private void SetTargetToAttackSystem(GameObject enemyGO)
+    {
+        currentEnemyTarget = enemyGO.GetComponent<Enemy>();
+        currentEnemyTarget.OnDie += CurrentTargetIsDie;
+
         TowerAttack.SetTarget(currentEnemyTarget);
+    }
+
+    private void OnDestroy()
+    {
+        currentEnemyTarget.OnDie -= CurrentTargetIsDie;
     }
 
     public void SetupRange(int range)

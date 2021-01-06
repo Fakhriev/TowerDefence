@@ -10,6 +10,8 @@ public class Arrow : MonoBehaviour
     [SerializeField] private float rangeToHitTheTarget;
 
     private Enemy enemyTarget;
+
+    private int damage;
     private bool isMovingToTarget;
 
     private TowerAttack myTowerAttack;
@@ -30,6 +32,7 @@ public class Arrow : MonoBehaviour
 
     private void HitTheTarget()
     {
+        enemyTarget.Hit(damage);
         enemyTarget = null;
 
         isMovingToTarget = false;
@@ -49,9 +52,11 @@ public class Arrow : MonoBehaviour
         meshParent.SetActive(true);
     }
 
-    public void SetArrow(TowerAttack towerAttack)
+    public void SetArrow(TowerAttack towerAttack, int damage)
     {
         myTowerAttack = towerAttack;
+        this.damage = damage;
+
         enemyTarget = null;
 
         meshParent.SetActive(false);

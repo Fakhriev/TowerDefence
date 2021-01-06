@@ -45,7 +45,7 @@ public class TowerUpgrade : MonoBehaviour
     {
         TowerTargetSystem.SetupRange(towerLevel.Stats.Range);
 
-        TowerAttack.SetAttackSpeed(towerLevel.Stats.AttacksInSecond);
+        TowerAttack.SetAttacksSpeedAndDamage(towerLevel.Stats.AttacksInSecond, towerLevel.Stats.Damage);
         //TowerAttack.SetArrowPrefab(Tower.MyTowerData.ArrowPrefab);
     }
 
