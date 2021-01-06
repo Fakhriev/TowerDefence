@@ -22,12 +22,12 @@ MonoBehaviour:
       upgradeToNextLevelCost: 20
       stats:
         damage: 15
-        attacksInSecond: 0.2
+        attacksInSecond: 0.5
         range: 6
     - level: 2
       meshPrefab: {fileID: 2774358085951286558, guid: 150768c5d42bbdf4daa467b4349071e1, type: 3}
       upgradeToNextLevelCost: 30
       stats:
         damage: 20
-        attacksInSecond: 0.4
+        attacksInSecond: 0.75
         range: 7
