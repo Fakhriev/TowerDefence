@@ -15,18 +15,19 @@ MonoBehaviour:
   towerData:
     type: 3
     buildCost: 125
+    arrowPrefab: {fileID: 0}
     levelsArray:
     - level: 1
       meshPrefab: {fileID: 571825701787447816, guid: bfa1e0c11d2d8374a856410d3d058fa7, type: 3}
       upgradeToNextLevelCost: 75
       stats:
         damage: 90
-        attacksInSecond: 1
-        range: 13
+        attacksInSecond: 1.25
+        range: 10
     - level: 2
       meshPrefab: {fileID: 8327630984749257414, guid: 2509faedaf5de07439943eca113f303e, type: 3}
       upgradeToNextLevelCost: 90
       stats:
         damage: 100
-        attacksInSecond: 3
-        range: 15
+        attacksInSecond: 1.5
+        range: 12
