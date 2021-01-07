@@ -338,6 +338,7 @@ GameObject:
   - component: {fileID: 6139986224795129019}
   - component: {fileID: 403019362470586503}
   - component: {fileID: 1316914612131749049}
+  - component: {fileID: 1178043610690540659}
   - component: {fileID: 3976540642552783957}
   m_Layer: 0
   m_Name: Enemy
@@ -422,6 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f55d8d9d28342474aa15b035d77982ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyMovement: {fileID: 1178043610690540659}
   EnemyHealth: {fileID: 3976540642552783957}
   boxCollider: {fileID: 5257027061775952792}
   meshPrefabParent: {fileID: 3168661332172284887}
@@ -430,6 +432,19 @@ MonoBehaviour:
     defaultMeshPrefab: {fileID: 403019362463161129}
     defaultHips: {fileID: 403019362463161131}
   deactivateTimer: 4
+--- !u!114 &1178043610690540659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403019362463161143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cecdce0421473d54fb52fd6cae43a5c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 1316914612131749049}
 --- !u!114 &3976540642552783957
 MonoBehaviour:
   m_ObjectHideFlags: 0
