@@ -5,9 +5,13 @@ public class EnemyHealth : MonoBehaviour
     [Header("References")]
     [SerializeField] private Enemy Enemy;
 
-    [Header("Enemy Health Parametres")]
-    [SerializeField] private int health;
-    
+    private int health;
+
+    public void SetEnemyhealth(int Health)
+    {
+        health = Health;
+    }
+
     public void DamageToHealth(int damage)
     {
         health -= damage;

@@ -966,6 +966,18 @@ MonoBehaviour:
   spawnInterval: 5
   spawnedEnemiesTransform: {fileID: 79699806}
   spawnedEnemiesList: []
+  enemiesData:
+  - {fileID: 11400000, guid: d5312a92b71310244a867ca6d65e247b, type: 2}
+  - {fileID: 11400000, guid: 46a855652f2f42c4b894bc13557a7fe0, type: 2}
+  enemiesToSpawn:
+  - type: 0
+    amount: 3
+  - type: 1
+    amount: 2
+  - type: 0
+    amount: 1
+  enemyDataList: []
+  spawnIndex: 0
 --- !u!4 &291567968
 Transform:
   m_ObjectHideFlags: 0

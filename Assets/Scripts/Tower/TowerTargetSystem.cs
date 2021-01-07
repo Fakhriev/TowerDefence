@@ -88,7 +88,10 @@ public class TowerTargetSystem : MonoBehaviour
 
     private void OnDestroy()
     {
-        currentEnemyTarget.OnDie -= CurrentTargetIsDie;
+        if(currentEnemyTarget != null)
+        {
+            currentEnemyTarget.OnDie -= CurrentTargetIsDie;
+        }
     }
 
     public void SetupRange(int range)

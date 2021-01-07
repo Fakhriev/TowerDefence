@@ -8,11 +8,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyHealth EnemyHealth;
 
     [Header("Enemy Components")]
-    [SerializeField] private Animator Animator;
     [SerializeField] private BoxCollider boxCollider;
 
+    [Header("Mesh Components")]
+    [SerializeField] private Transform meshPrefabParent;
+    [SerializeField] private DefaultEnemyMeshComponenets defaultComponents;
+
     [Header("Enemy Parametres")]
-    [SerializeField] private float speed;
     [SerializeField] private float deactivateTimer;
 
     public delegate void MethodContainer();
@@ -23,6 +25,13 @@ public class Enemy : MonoBehaviour
 
     private bool isMoving;
     private bool isDead;
+
+    /// <summary>
+    /// Fields From EnemyData
+    /// </summary>
+    public EnemyData myEnemyData;
+    private Animator animator;
+    private float speed;
 
     private void Update()
     {
@@ -51,7 +60,21 @@ public class Enemy : MonoBehaviour
     private void StopEnemy(EnemyAnimationTrigger animTrigger)
     {
         isMoving = false;
-        Animator.SetTrigger(animTrigger.ToString());
+        animator.SetTrigger(animTrigger.ToString());
+    }
+
+    private void SetupEnemyMeshPrefab()
+    {
+        GameObject createdMeshPrefab = Instantiate(myEnemyData.MeshPrefab, meshPrefabParent);
+        EnemyMeshPrefab enemyMeshPrefab = createdMeshPrefab.GetComponent<EnemyMeshPrefab>();
+        animator = enemyMeshPrefab.Animator;
+    }
+
+    private void SetupEnemyStats()
+    {
+        EnemyHealth.SetEnemyhealth(myEnemyData.EnemyStats.Health);
+        //EnemyAttack.SetEnemyDamage(myEnemyData.EnemyStats.DamagePerSecond); TODO
+        speed = myEnemyData.EnemyStats.Speed;
     }
 
     private IEnumerator MakeEnemyNonActives()
@@ -79,8 +102,14 @@ public class Enemy : MonoBehaviour
         StartCoroutine(MakeEnemyNonActives());
     }
 
-    public void Spawn(MovePoint[] movePoints)
+    public void Spawn(MovePoint[] movePoints, EnemyData enemyData)
     {
+        defaultComponents.DeactivateDefaultComponenets();
+        myEnemyData = enemyData;
+
+        SetupEnemyMeshPrefab();
+        SetupEnemyStats();
+
         movePointsArray = movePoints;
 
         transform.position = Array.Find(movePointsArray, point => point.type == MovePointType.StartPoint).position;
@@ -95,4 +124,19 @@ public enum EnemyAnimationTrigger
 {
     Attack,
     Die
+}
+
+[Serializable]
+public class DefaultEnemyMeshComponenets
+{
+    [SerializeField] private Animator defaultAnimator;
+    [SerializeField] private GameObject defaultMeshPrefab;
+    [SerializeField] private GameObject defaultHips;
+
+    public void DeactivateDefaultComponenets()
+    {
+        defaultAnimator.enabled = false;
+        defaultMeshPrefab.SetActive(false);
+        defaultHips.SetActive(false);
+    }
 }
