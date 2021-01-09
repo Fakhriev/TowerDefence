@@ -2,10 +2,6 @@
 
 public class UIModalsController : MonoBehaviour
 {
-    [Header("UI Elements")]
-    [SerializeField] private GameObject buildMenu;
-    [SerializeField] private GameObject upgradeMenu;
-
     [Header("Prefabs For Create")]
     [SerializeField] private GameObject BuildMenuPrefab;
     [SerializeField] private GameObject UpgradeMenuPrefab;
@@ -15,6 +11,9 @@ public class UIModalsController : MonoBehaviour
 
     [Header("Main Camera")]
     [SerializeField] private Camera mainCamera;
+
+    private GameObject buildMenu;
+    private GameObject upgradeMenu;
 
     private void Start()
     {

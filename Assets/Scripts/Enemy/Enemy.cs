@@ -25,6 +25,11 @@ public class Enemy : MonoBehaviour
     public delegate void MethodContainer();
     public event MethodContainer OnDie;
 
+    private void Start()
+    {
+        OnDie += EnemyDie;
+    }
+
     private void SetupEnemyMeshPrefab()
     {
         GameObject createdMeshPrefab = Instantiate(myEnemyData.MeshPrefab, meshPrefabParent);
@@ -37,6 +42,13 @@ public class Enemy : MonoBehaviour
         EnemyMovement.SetupSpeed(myEnemyData.EnemyStats.Speed);
         EnemyHealth.SetEnemyhealth(myEnemyData.EnemyStats.Health);
         //EnemyAttack.SetEnemyDamage(myEnemyData.EnemyStats.DamagePerSecond); TODO
+    }
+
+    private void EnemyDie()
+    {
+        OnDie -= EnemyDie;
+
+        EnemyKillEvents.InvokeOnEnemyDieEvent(myEnemyData);
     }
 
     private IEnumerator MakeEnemyNonActives()

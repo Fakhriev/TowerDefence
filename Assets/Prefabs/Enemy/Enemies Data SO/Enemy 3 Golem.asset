@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd0c0b8895335594f8a77c3644ff84b5, type: 3}
-  m_Name: Enemy 2 Golem
+  m_Name: Enemy 3 Golem
   m_EditorClassIdentifier: 
   enemyData:
     type: 1
@@ -18,4 +18,5 @@ MonoBehaviour:
       health: 400
       speed: 1
       damagePerSecond: 10
+      goldForKill: 100
     meshPrefab: {fileID: 321352622120832871, guid: 22c98780cd98c734085e2e857e9d5eb4, type: 3}

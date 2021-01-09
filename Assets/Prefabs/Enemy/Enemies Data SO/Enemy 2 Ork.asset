@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd0c0b8895335594f8a77c3644ff84b5, type: 3}
-  m_Name: Enemy 1 Solider
+  m_Name: Enemy 2 Ork
   m_EditorClassIdentifier: 
   enemyData:
-    type: 0
+    type: 2
     enemyStats:
-      health: 100
-      speed: 2
-      damagePerSecond: 3
-      goldForKill: 25
-    meshPrefab: {fileID: 5104499196115074116, guid: e08d61f4abf212a49aa91a7af5efd961, type: 3}
+      health: 200
+      speed: 1.5
+      damagePerSecond: 6
+      goldForKill: 50
+    meshPrefab: {fileID: 2170133017833978348, guid: 421695d67313f3d498dbaf8bc1dabe5e, type: 3}

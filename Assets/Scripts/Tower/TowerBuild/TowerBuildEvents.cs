@@ -14,8 +14,8 @@ public class TowerBuildEvents : MonoBehaviour
     public delegate void MethodContainerWtihFoundation(Foundation Foundation);
     public event MethodContainerWtihFoundation OnTowerFoundationClick;
 
-    public delegate void MethodContainerWtihTowerDataSO(TowerData_SO TowerDataSO);
-    public event MethodContainerWtihTowerDataSO OnTowerBuild;
+    public delegate void MethodContainerWtihTowerData(TowerData TowerData);
+    public event MethodContainerWtihTowerData OnTowerBuild;
 
     private Foundation foundation;
 
@@ -33,13 +33,13 @@ public class TowerBuildEvents : MonoBehaviour
         UIModalsController.OpenBuildMenu(foundation.position);
     }
 
-    private void BuildTower(TowerData_SO towerDataSO)
+    private void BuildTower(TowerData towerData)
     {
         GameObject createdTower = Instantiate(TowerPrefab, foundation.towerParent);
-        createdTower.name = towerDataSO.TowerData.Type.ToString();
+        createdTower.name = towerData.Type.ToString();
 
         Tower tower = createdTower.GetComponent<Tower>();
-        tower.SetupTower(towerDataSO.TowerData, foundation);
+        tower.SetupTower(towerData, foundation);
 
         CloseUIElements();
     }
@@ -49,9 +49,9 @@ public class TowerBuildEvents : MonoBehaviour
         UIModalsController.CloseUIElement();
     }
 
-    public static void InvokeOnTowerBuildEvent(TowerData_SO towerDataSO)
+    public static void InvokeOnTowerBuildEvent(TowerData towerData)
     {
-        Instance.OnTowerBuild(towerDataSO);
+        Instance.OnTowerBuild(towerData);
     }
 
     public static void InvokeOnTowerFoundationClickEvent(Foundation foundation)

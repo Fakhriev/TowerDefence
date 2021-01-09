@@ -42,15 +42,19 @@ public class EnemyData
 public enum EnemyType
 {
     Soldier,
-    Golem
+    Golem,
+    Ork
 }
 
 [Serializable]
 public class EnemyStats
 {
     [SerializeField] private int health;
+
     [SerializeField] private float speed;
     [SerializeField] private float damagePerSecond;
+
+    [SerializeField] private int goldForKill;
 
     public int Health
     {
@@ -73,6 +77,14 @@ public class EnemyStats
         get
         {
             return damagePerSecond;
+        }
+    }
+
+    public int GoldForKill
+    {
+        get
+        {
+            return goldForKill;
         }
     }
 }

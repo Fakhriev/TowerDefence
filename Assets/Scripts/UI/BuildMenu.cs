@@ -29,9 +29,10 @@ public class BuildMenu : MonoBehaviour
             return;
         }
 
+        TowerData TowerData = Array.Find(towersDataArray, TD => TD.TowerData.Type == type).TowerData;
+
         //If Player Has Enough Gold - TODO - Or Make it Automatically With Interactible Button
 
-        TowerData_SO towerDataSO = Array.Find(towersDataArray, TD => TD.TowerData.Type == type);
-        TowerBuildEvents.InvokeOnTowerBuildEvent(towerDataSO);
+        TowerBuildEvents.InvokeOnTowerBuildEvent(TowerData);
     }
 }

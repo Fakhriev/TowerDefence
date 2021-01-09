@@ -24,9 +24,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private EnemyData_SO[] enemiesData = new EnemyData_SO[0];
     [SerializeField] private EnemyTypeAndAmountToSpawn[] enemiesToSpawn = new EnemyTypeAndAmountToSpawn[0];
 
-    public List<EnemyData_SO> enemyDataList = new List<EnemyData_SO>();
-    public int spawnIndex = 0;
-    public int enemiesAmount;
+    private List<EnemyData_SO> enemyDataList = new List<EnemyData_SO>();
+    private int spawnIndex = 0;
+    private int enemiesAmount;
 
     private IEnumerator Start()
     {
