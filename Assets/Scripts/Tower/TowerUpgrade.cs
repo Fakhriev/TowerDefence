@@ -9,14 +9,17 @@ public class TowerUpgrade : MonoBehaviour
     [SerializeField] private TowerAttack TowerAttack;
 
     private GameObject towerMeshGO;
-    private Transform shootingPosition;
-
     private TowerOneLevel towerLevel;
+
     private int level;
+    private int sellCost;
+
+    private bool isTowerMaxLevel;
 
     private void OnMouseUp()
     {
-        TowerUpgradeEvents.InvokeOnTowerClickEvent(Tower);
+        TowerUpgradeData towerUpgradeData = GetTowerToUpgradeData();
+        TowerUpgradeEvents.InvokeOnTowerClickEvent(towerUpgradeData);
 
         //Debug.Log("TowerMenu: OnMouseUp");
     }
@@ -27,6 +30,7 @@ public class TowerUpgrade : MonoBehaviour
 
         SetupMesh();
         SetupStats();
+        CalculateSellCost();
 
         SetupShootingPosition();
     }
@@ -49,30 +53,65 @@ public class TowerUpgrade : MonoBehaviour
         //TowerAttack.SetArrowPrefab(Tower.MyTowerData.ArrowPrefab);
     }
 
+    private void CalculateSellCost()
+    {
+        if(level == 1)
+        {
+            sellCost = (int)(Tower.MyTowerData.BuildCost / 2);
+        }
+        else
+        {
+            int sellUpgradesCost = 0;
+
+            for(int i = 0; i < level - 1; i++)
+            {
+                sellUpgradesCost += Tower.MyTowerData.LevelsArray[i].UpgraeToNextLevelCost / 2;
+            }
+
+            sellCost = (int)(Tower.MyTowerData.BuildCost / 2) + sellUpgradesCost;
+        }
+
+        Debug.Log($"Build Cost: {Tower.MyTowerData.BuildCost}. Calculated Sell Cost: {sellCost}");
+    }
+
     private void SetupShootingPosition()
     {
         TowerMeshPrefab towerMesh = towerMeshGO.GetComponent<TowerMeshPrefab>();
         TowerAttack.SetShootingPosition(towerMesh.ShootingPosition);
     }
 
-    private bool IsCanBeUpgraded()
+    private bool IsTowerMaxLevel()
     {
         if (Array.Find(Tower.MyTowerData.LevelsArray, levelInArray => levelInArray.Level == (level + 1)) == null)
         {
             //Debug.Log("TowerUpgrade: IsCanBeUpgraded(): Have not this Level in LevelsArray");
-            return false;
+            return true;
         }
         else
         {
-            return true;
+            return false;
         }
+    }
+
+    private TowerUpgradeData GetTowerToUpgradeData()
+    {
+        TowerUpgradeData value = new TowerUpgradeData();
+
+        value.TowerToUpgrade = Tower;
+
+        value.UpgradeCost = towerLevel.UpgraeToNextLevelCost;
+        value.SellCost = sellCost;
+
+        value.IsTowerMaxLevel = isTowerMaxLevel;
+
+        return value;
     }
 
     public void Upgrade()
     {
-        if(IsCanBeUpgraded() == false)
+        if(isTowerMaxLevel == true)
         {
-            Debug.LogWarning($"Tower [{Tower.MyTowerData.Type}] Can Not Be Upgraded from Level [{level}] to Level [{level + 1}]");
+            Debug.LogWarning($"Tower [{Tower.MyTowerData.Type}] is Maximal Level. It's Can Not Be Upgraded from Level [{level}] to Level [{level + 1}]");
             return;
         }
 
@@ -80,11 +119,13 @@ public class TowerUpgrade : MonoBehaviour
         Destroy(towerMeshGO);
 
         SetAllParametres();
+        isTowerMaxLevel = IsTowerMaxLevel();
     }
 
     public void SetupTowerLevelOne()
     {
         level = 1;
+        isTowerMaxLevel = false;
 
         SetAllParametres();
     }

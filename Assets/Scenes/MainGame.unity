@@ -2117,6 +2117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee166bdd3ce59c845a3c635e438da8d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GoldController: {fileID: 11253293}
   UIModalsController: {fileID: 1250424180}
 --- !u!4 &844291095 stripped
 Transform:

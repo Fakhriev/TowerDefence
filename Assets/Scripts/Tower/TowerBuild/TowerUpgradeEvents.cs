@@ -3,19 +3,20 @@
 public class TowerUpgradeEvents : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private GoldController GoldController;
     [SerializeField] private UIModalsController UIModalsController;
 
     public static TowerUpgradeEvents Instance { get { return instance; } }
     private static TowerUpgradeEvents instance;
 
-    public delegate void MethodContainerWithTower(Tower Tower);
-    public event MethodContainerWithTower OnTowerClick;
+    public delegate void MethodContainerWithTowerUpgradeData(TowerUpgradeData TowerUpgradeData);
+    public event MethodContainerWithTowerUpgradeData OnTowerClick;
 
     public delegate void MethodContainer();
     public event MethodContainer OnTowerUpgrade;
     public event MethodContainer OnTowerSell;
 
-    private Tower towerToUpgrade;
+    private TowerUpgradeData towerUpgradeData;
 
     private void Awake()
     {
@@ -27,24 +28,26 @@ public class TowerUpgradeEvents : MonoBehaviour
         OnTowerSell += SellTower;
     }
 
-    private void OpenUpgradeMenu(Tower tower)
+    private void OpenUpgradeMenu(TowerUpgradeData towerUpgradeData)
     {
-        towerToUpgrade = tower;
-        UIModalsController.OpenUpgradeMenu(towerToUpgrade.transform.position);
+        this.towerUpgradeData = towerUpgradeData;
+        UIModalsController.OpenUpgradeMenu(towerUpgradeData.TowerToUpgrade.transform.position, towerUpgradeData.UpgradeCost, towerUpgradeData.IsTowerMaxLevel);
         
         //Debug.Log("TowerUpgradeEvents: OpenUpgradeMenu");
     }
 
     private void UpgradeTower()
     {
-        towerToUpgrade.Upgrade();
-        
+        towerUpgradeData.TowerToUpgrade.Upgrade();
+        GoldController.TakeGoldForUpgrade(towerUpgradeData.UpgradeCost);
+
         CloseUIElements();
     }
 
     private void SellTower()
     {
-        towerToUpgrade.Sell();
+        towerUpgradeData.TowerToUpgrade.Sell();
+        GoldController.AddGoldForTowerSell(towerUpgradeData.SellCost);
 
         CloseUIElements();
     }
@@ -54,9 +57,9 @@ public class TowerUpgradeEvents : MonoBehaviour
         UIModalsController.CloseUIElement();
     }
 
-    public static void InvokeOnTowerClickEvent(Tower tower)
+    public static void InvokeOnTowerClickEvent(TowerUpgradeData TowerUpgradeData)
     {
-        Instance.OnTowerClick?.Invoke(tower);
+        Instance.OnTowerClick?.Invoke(TowerUpgradeData);
         
         //Debug.Log("TowerUpgradeEvents: InvokeOnTowerClickEvent");
     }

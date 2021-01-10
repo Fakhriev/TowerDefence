@@ -15,10 +15,17 @@ public class BuildMenu : MonoBehaviour
 
     private void Start()
     {
-        btnTower1.onClick.AddListener(delegate { TryToBuildTower(TowerTypes.Tower1); } );
-        btnTower2.onClick.AddListener(delegate { TryToBuildTower(TowerTypes.Tower2); } );
-        btnTower3.onClick.AddListener(delegate { TryToBuildTower(TowerTypes.Tower3); } );
-        btnTower4.onClick.AddListener(delegate { TryToBuildTower(TowerTypes.Tower4); } );
+        SubscribeAtButtons();
+
+        GoldController.Instance.OnGoldValueChanged += UpdateButtonsInteracteble;
+    }
+
+    private void SubscribeAtButtons()
+    {
+        btnTower1.onClick.AddListener(delegate { TryToBuildTower(TowerTypes.Tower1); });
+        btnTower2.onClick.AddListener(delegate { TryToBuildTower(TowerTypes.Tower2); });
+        btnTower3.onClick.AddListener(delegate { TryToBuildTower(TowerTypes.Tower3); });
+        btnTower4.onClick.AddListener(delegate { TryToBuildTower(TowerTypes.Tower4); });
     }
 
     private void TryToBuildTower(TowerTypes type)
@@ -34,5 +41,18 @@ public class BuildMenu : MonoBehaviour
         //If Player Has Enough Gold - TODO - Or Make it Automatically With Interactible Button
 
         TowerBuildEvents.InvokeOnTowerBuildEvent(TowerData);
+    }
+
+    private void UpdateButtonsInteracteble(int playerGold)
+    {
+        btnTower1.interactable = playerGold >= Array.Find(towersDataArray, TD => TD.TowerData.Type == TowerTypes.Tower1).TowerData.BuildCost;
+        btnTower2.interactable = playerGold >= Array.Find(towersDataArray, TD => TD.TowerData.Type == TowerTypes.Tower2).TowerData.BuildCost;
+        btnTower3.interactable = playerGold >= Array.Find(towersDataArray, TD => TD.TowerData.Type == TowerTypes.Tower3).TowerData.BuildCost;
+        btnTower4.interactable = playerGold >= Array.Find(towersDataArray, TD => TD.TowerData.Type == TowerTypes.Tower4).TowerData.BuildCost;
+    }
+
+    private void OnEnable()
+    {
+        UpdateButtonsInteracteble(GoldController.Instance.Gold);
     }
 }

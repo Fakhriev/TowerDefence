@@ -12,16 +12,16 @@ public class UIModalsController : MonoBehaviour
     [Header("Main Camera")]
     [SerializeField] private Camera mainCamera;
 
-    private GameObject buildMenu;
-    private GameObject upgradeMenu;
+    private BuildMenu buildMenu;
+    private UpgradeMenu upgradeMenu;
 
     private void Start()
     {
-        buildMenu = Instantiate(BuildMenuPrefab, menuParent);
-        buildMenu.SetActive(false);
+        buildMenu = Instantiate(BuildMenuPrefab, menuParent).GetComponent<BuildMenu>();
+        buildMenu.gameObject.SetActive(false);
 
-        upgradeMenu = Instantiate(UpgradeMenuPrefab, menuParent);
-        upgradeMenu.SetActive(false);
+        upgradeMenu = Instantiate(UpgradeMenuPrefab, menuParent).GetComponent<UpgradeMenu>();
+        upgradeMenu.gameObject.SetActive(false);
     }
 
     public void OpenBuildMenu(Vector3 position)
@@ -39,10 +39,10 @@ public class UIModalsController : MonoBehaviour
         }
 
         buildMenu.transform.position = mainCamera.WorldToScreenPoint(position);
-        buildMenu.SetActive(true);
+        buildMenu.gameObject.SetActive(true);
     }
 
-    public void OpenUpgradeMenu(Vector3 position)//Also Tower Variation
+    public void OpenUpgradeMenu(Vector3 position, int upgradeCost, bool isTowerMaxLevel)
     {
         if(upgradeMenu == null)
         {
@@ -56,13 +56,14 @@ public class UIModalsController : MonoBehaviour
             //return;
         }
 
+        upgradeMenu.SetUpgradeData(upgradeCost, isTowerMaxLevel);
         upgradeMenu.transform.position = mainCamera.WorldToScreenPoint(position);
-        upgradeMenu.SetActive(true);
+        upgradeMenu.gameObject.SetActive(true);
     }    
 
     public void CloseUIElement()
     {
-        buildMenu?.SetActive(false);
-        upgradeMenu?.SetActive(false);
+        buildMenu?.gameObject.SetActive(false);
+        upgradeMenu?.gameObject.SetActive(false);
     }
 }

@@ -11,7 +11,7 @@ public class TowerData
     [SerializeField] private int buildCost;
 
     [Header("Arrow Prefab")]
-    [SerializeField] private GameObject arrowPrefab;
+    /*[SerializeField]*/ private GameObject arrowPrefab;
 
     [Header("Tower Levels")]
     [SerializeField] private TowerOneLevel[] levelsArray;

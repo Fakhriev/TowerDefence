@@ -17,8 +17,8 @@ public class GoldController : MonoBehaviour
 
     private int gold;
 
-    public GoldController Instance { get { return instance; } }
-    private GoldController instance;
+    public static GoldController Instance { get { return instance; } }
+    private static GoldController instance;
 
     public delegate void MethodContainerWithInt(int NewGoldValue);
     public event MethodContainerWithInt OnGoldValueChanged;
@@ -38,22 +38,13 @@ public class GoldController : MonoBehaviour
     private void SubscribeAtEvents()
     {
         OnGoldValueChanged += NewGoldValue;
-
         TowerBuildEvents.OnTowerBuild += TakeGoldForBuild;
-        TowerUpgradeEvents.OnTowerUpgrade += TakeGoldForUpgrade;//TODO
-
         EnemyKillEvents.OnEnemyDie += AddGoldForEnemy;
     }
 
     private void TakeGoldForBuild(TowerData towerData)
     {
         gold -= towerData.BuildCost;
-        OnGoldValueChanged(gold);
-    }
-
-    private void TakeGoldForUpgrade()
-    {
-        //TODO
         OnGoldValueChanged(gold);
     }
 
@@ -71,6 +62,18 @@ public class GoldController : MonoBehaviour
     public void SetupStartGold()
     {
         gold = startGold;
+        OnGoldValueChanged(gold);
+    }
+
+    public void TakeGoldForUpgrade(int upgradeCost)
+    {
+        gold -= upgradeCost;
+        OnGoldValueChanged(gold);
+    }
+
+    public void AddGoldForTowerSell(int sellCost)
+    {
+        gold += sellCost;
         OnGoldValueChanged(gold);
     }
 

@@ -11,18 +11,21 @@ public class TowerBuildEvents : MonoBehaviour
     public static TowerBuildEvents Instance { get { return instance; } }
     private static TowerBuildEvents instance;
 
-    public delegate void MethodContainerWtihFoundation(Foundation Foundation);
-    public event MethodContainerWtihFoundation OnTowerFoundationClick;
+    public delegate void MethodContainerWithFoundation(Foundation Foundation);
+    public event MethodContainerWithFoundation OnTowerFoundationClick;
 
-    public delegate void MethodContainerWtihTowerData(TowerData TowerData);
-    public event MethodContainerWtihTowerData OnTowerBuild;
+    public delegate void MethodContainerWithTowerData(TowerData TowerData);
+    public event MethodContainerWithTowerData OnTowerBuild;
 
     private Foundation foundation;
 
     private void Awake()
     {
         instance = this;
+    }
 
+    private void Start()
+    {
         OnTowerFoundationClick += OpenBuildMenu;
         OnTowerBuild += BuildTower;
     }
