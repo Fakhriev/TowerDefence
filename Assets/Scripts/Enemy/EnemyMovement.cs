@@ -63,6 +63,10 @@ public class EnemyMovement : MonoBehaviour
         nextMovePoint = Array.Find(movePointsArray, point => point.type == MovePointType.Point);
 
         transform.LookAt(nextMovePoint.transform);
+    }
+
+    public void StartMoving()
+    {
         isMoving = true;
     }
 

@@ -84,6 +84,21 @@ public class Enemy : MonoBehaviour
         SetupEnemyStats();
 
         EnemyMovement.SetupMovePoints(movePoints);
+        gameObject.SetActive(false);
+    }
+
+    public void StartMoving()
+    {
+        gameObject.SetActive(true);
+        EnemyMovement.StartMoving();
+    }
+
+    public EnemyData MyEnemyData
+    {
+        get
+        {
+            return myEnemyData;
+        }
     }
 }
 
