@@ -14,34 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rounds:
   - waves:
-    - enemyType: 0
-      amount: 2
-      timerToNextWave: 1
-    - enemyType: 2
-      amount: 3
-      timerToNextWave: 1
-    - enemyType: 0
-      amount: 4
-      timerToNextWave: 3
-    - enemyType: 2
-      amount: 3
-      timerToNextWave: 4
-    - enemyType: 1
-      amount: 2
-      timerToNextWave: 1
-  - waves:
-    - enemyType: 0
-      amount: 2
-      timerToNextWave: 1
-    - enemyType: 2
-      amount: 3
-      timerToNextWave: 1
-    - enemyType: 0
-      amount: 4
-      timerToNextWave: 3
-    - enemyType: 2
-      amount: 3
-      timerToNextWave: 4
-    - enemyType: 1
-      amount: 2
-      timerToNextWave: 1
+    - microwaves:
+      - enemyType: 0
+        amount: 2
+      - enemyType: 2
+        amount: 1
+      timerToNextWave: 2
+    - microwaves:
+      - enemyType: 0
+        amount: 3
+      - enemyType: 2
+        amount: 2
+      timerToNextWave: 2
+    - microwaves:
+      - enemyType: 1
+        amount: 2
+      timerToNextWave: 2

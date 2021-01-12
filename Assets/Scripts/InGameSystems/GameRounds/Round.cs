@@ -19,12 +19,35 @@ public class Round
 [Serializable]
 public class Wave
 {
-    [Header("Enemy Type And Amount In Wave")]
-    [SerializeField] private EnemyType enemyType;
-    [SerializeField] private int amount;
+    [Header("Micro Waves")]
+    [SerializeField] private Microwave[] microwaves;
 
     [Header("Next Wave Timer")]
     [SerializeField] private float timerToNextWave;
+
+    public Microwave[] Microwaves
+    {
+        get
+        {
+            return microwaves;
+        }
+    }
+
+    public float TimerToNextWave
+    {
+        get
+        {
+            return timerToNextWave;
+        }
+    }
+}
+
+[Serializable]
+public class Microwave
+{
+    [Header("Enemy Type And Amount In Wave")]
+    [SerializeField] private EnemyType enemyType;
+    [SerializeField] private int amount;
 
     public EnemyType EnemyType
     {
@@ -39,14 +62,6 @@ public class Wave
         get
         {
             return amount;
-        }
-    }
-
-    public float TimerToNextWave
-    {
-        get
-        {
-            return timerToNextWave;
         }
     }
 }

@@ -989,6 +989,7 @@ GameObject:
   m_Component:
   - component: {fileID: 291567968}
   - component: {fileID: 291567967}
+  - component: {fileID: 291567969}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -1009,18 +1010,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 403019362463161143, guid: 1003a7e057f274a41b1047dfc9a60217, type: 3}
-  Location: {fileID: 338127132}
   MovePoints: {fileID: 1016440010}
-  defaultStartTimer: 2
-  defaultEnemyStartInterval: 5
-  defaultWaveInterval: 3
+  EnemyMoveStarter: {fileID: 291567969}
   spawnedEnemiesTransform: {fileID: 79699806}
-  spawnedEnemiesList: []
+  gameRoundsConfigSO: {fileID: 11400000, guid: 9ef4a68b22d150941b9991bbd02b89ec, type: 2}
   enemiesData:
   - {fileID: 11400000, guid: d5312a92b71310244a867ca6d65e247b, type: 2}
   - {fileID: 11400000, guid: f1561a3ecb4eac9458e6cae642cd52c6, type: 2}
   - {fileID: 11400000, guid: 46a855652f2f42c4b894bc13557a7fe0, type: 2}
-  gameRoundsConfigSO: {fileID: 11400000, guid: 9ef4a68b22d150941b9991bbd02b89ec, type: 2}
 --- !u!4 &291567968
 Transform:
   m_ObjectHideFlags: 0
@@ -1036,6 +1033,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &291567969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291567966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d8470dd32b119847a9414c2c4237b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultStartTimer: 3
+  defaultEnemyStartInterval: 5
+  defaultWaveInterval: 3
 --- !u!1001 &296529590
 PrefabInstance:
   m_ObjectHideFlags: 0
