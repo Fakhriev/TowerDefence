@@ -14,6 +14,22 @@ public class EnemyMoveStarter : MonoBehaviour
 
     private int currentWave;
 
+    private void Start()
+    {
+        EnemyKillEvents.Instance.OnEnemyDie += RemoveAliveEnemyFromList;
+    }
+
+    private void RemoveAliveEnemyFromList(EnemyData enemyData)
+    {
+        aliveEnemiesList.Remove(enemyData);
+
+        if(aliveEnemiesList.Count == 0)
+        {
+            Debug.Log("All Spawned Enemies Was Killed");
+            GameEndEvents.InvokeOnGameEndEvent(GameEndType.Win);
+        }
+    }
+
     private void StartWave()
     {
         StartCoroutine(WaveEnemiesStarter());
@@ -26,6 +42,9 @@ public class EnemyMoveStarter : MonoBehaviour
         while (enemiesInWave.Count > 0)
         {
             enemiesInWave[0].StartMoving();
+
+            //Так делать не нужно, так как игрок может убить всех заспавнившихся врагов, покан овые не успели появиться. В перерывах между волнами, например - в таком случае игроку засчитает победу,
+            //Хотя враги продолжат спавниться. И лучше вынести логику "Сколько врагов осталось в живых" в отедьный класс.
             aliveEnemiesList.Add(enemiesInWave[0].MyEnemyData);
             
             enemiesInWave.RemoveAt(0);

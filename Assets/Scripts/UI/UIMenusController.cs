@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class UIModalsController : MonoBehaviour
+public class UIMenusController : MonoBehaviour
 {
     [Header("Prefabs For Create")]
     [SerializeField] private GameObject BuildMenuPrefab;

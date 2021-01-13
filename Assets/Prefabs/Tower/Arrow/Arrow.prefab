@@ -47,8 +47,6 @@ MonoBehaviour:
   meshParent: {fileID: 951803935325962802}
   forwardFlySpeed: 15
   rangeToHitTheTarget: 0.25
-  enemyTarget: {fileID: 0}
-  isMovingToTarget: 0
 --- !u!1 &951803935325962802
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5220650562834106036}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.0066128, y: 0.6771, z: -0.40517}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 200, y: 100, z: 200}
   m_Children: []
   m_Father: {fileID: 951803935325962803}

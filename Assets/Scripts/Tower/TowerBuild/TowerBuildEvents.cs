@@ -3,7 +3,7 @@
 public class TowerBuildEvents : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private UIModalsController UIModalsController;
+    [SerializeField] private UIMenusController UIMenusController;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject TowerPrefab;
@@ -33,7 +33,7 @@ public class TowerBuildEvents : MonoBehaviour
     private void OpenBuildMenu(Foundation foundation)
     {
         this.foundation = foundation;
-        UIModalsController.OpenBuildMenu(foundation.position);
+        UIMenusController.OpenBuildMenu(foundation.position);
     }
 
     private void BuildTower(TowerData towerData)
@@ -49,7 +49,7 @@ public class TowerBuildEvents : MonoBehaviour
 
     private void CloseUIElements()
     {
-        UIModalsController.CloseUIElement();
+        UIMenusController.CloseUIElement();
     }
 
     public static void InvokeOnTowerBuildEvent(TowerData towerData)

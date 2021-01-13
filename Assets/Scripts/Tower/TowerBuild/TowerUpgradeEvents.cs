@@ -4,7 +4,7 @@ public class TowerUpgradeEvents : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GoldController GoldController;
-    [SerializeField] private UIModalsController UIModalsController;
+    [SerializeField] private UIMenusController UIMenusController;
 
     public static TowerUpgradeEvents Instance { get { return instance; } }
     private static TowerUpgradeEvents instance;
@@ -31,7 +31,7 @@ public class TowerUpgradeEvents : MonoBehaviour
     private void OpenUpgradeMenu(TowerUpgradeData towerUpgradeData)
     {
         this.towerUpgradeData = towerUpgradeData;
-        UIModalsController.OpenUpgradeMenu(towerUpgradeData.TowerToUpgrade.transform.position, towerUpgradeData.UpgradeCost, towerUpgradeData.IsTowerMaxLevel);
+        UIMenusController.OpenUpgradeMenu(towerUpgradeData.TowerToUpgrade.transform.position, towerUpgradeData.UpgradeCost, towerUpgradeData.IsTowerMaxLevel);
         
         //Debug.Log("TowerUpgradeEvents: OpenUpgradeMenu");
     }
@@ -54,7 +54,7 @@ public class TowerUpgradeEvents : MonoBehaviour
 
     private void CloseUIElements()
     {
-        UIModalsController.CloseUIElement();
+        UIMenusController.CloseUIElement();
     }
 
     public static void InvokeOnTowerClickEvent(TowerUpgradeData TowerUpgradeData)

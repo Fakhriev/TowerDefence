@@ -16,14 +16,26 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameRoundsConfig_SO gameRoundsConfigSO;
     [SerializeField] private EnemyData_SO[] enemiesData = new EnemyData_SO[0];
 
+    private Round currentRound;
+
     private void Awake()
     {
+        if(PlayerPrefs.HasKey("Round") == true)
+        {
+            //TODO
+            currentRound = gameRoundsConfigSO.Rounds[0];
+        }
+        else
+        {
+            currentRound = gameRoundsConfigSO.Rounds[0];
+        }
+
         SpawnEnemiesPull();
     }
 
     private void SpawnEnemiesPull()
     {
-        Round round = gameRoundsConfigSO.Rounds[0];
+        Round round = currentRound;
         List<EnemyWave> enemyWavesList = new List<EnemyWave>();
 
         for(int i = 0; i < round.Waves.Length; i++)
