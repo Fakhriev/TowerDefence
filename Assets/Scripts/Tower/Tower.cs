@@ -22,10 +22,15 @@ public class Tower : MonoBehaviour
     {
         if(gameEndType == GameEndType.Loose)
         {
-            TowerTargetSystem.enabled = false;
-            TowerTargetSystem.gameObject.SetActive(false);
-            TowerAttack.StopShooting();
+            StopAttack();
         }
+    }
+
+    private void StopAttack()
+    {
+        TowerTargetSystem.enabled = false;
+        TowerTargetSystem.gameObject.SetActive(false);
+        TowerAttack.StopShooting();
     }
 
     private void OnDestroy()
@@ -68,38 +73,6 @@ public class Tower : MonoBehaviour
         get
         {
             return myTowerData;
-        }
-    }
-}
-
-[System.Serializable]
-public class TowerComponents
-{
-    [SerializeField] private BoxCollider boxCollider;
-    [SerializeField] private Transform meshParent;
-    [SerializeField] private GameObject defaultMesh;
-
-    public BoxCollider BoxCollider
-    {
-        get
-        {
-            return boxCollider;
-        }
-    }
-
-    public Transform MeshParent
-    {
-        get
-        {
-            return meshParent;
-        }
-    }
-
-    public GameObject DefaultMesh
-    {
-        get
-        {
-            return defaultMesh;
         }
     }
 }
