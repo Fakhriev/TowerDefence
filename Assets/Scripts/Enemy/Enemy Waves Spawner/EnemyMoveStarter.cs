@@ -4,31 +4,17 @@ using UnityEngine;
 
 public class EnemyMoveStarter : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private AliveEnemyCounter AliveEnemyCounter;
+
     [Header("Default Enemy Move Starter Parametres")]
     [SerializeField] private float defaultStartTimer;
     [SerializeField] private float defaultEnemyStartInterval;
     [SerializeField] private float defaultWaveInterval;
 
     private List<EnemyWave> enemyWavesToStartList;
-    private List<EnemyData> aliveEnemiesList = new List<EnemyData>();
 
     private int currentWave;
-
-    private void Start()
-    {
-        EnemyKillEvents.Instance.OnEnemyDie += RemoveAliveEnemyFromList;
-    }
-
-    private void RemoveAliveEnemyFromList(EnemyData enemyData)
-    {
-        aliveEnemiesList.Remove(enemyData);
-
-        if(aliveEnemiesList.Count == 0)
-        {
-            Debug.Log("All Spawned Enemies Was Killed");
-            GameEndEvents.InvokeOnGameEndEvent(GameEndType.Win);
-        }
-    }
 
     private void StartWave()
     {
@@ -42,12 +28,8 @@ public class EnemyMoveStarter : MonoBehaviour
         while (enemiesInWave.Count > 0)
         {
             enemiesInWave[0].StartMoving();
-
-            //Так делать не нужно, так как игрок может убить всех заспавнившихся врагов, покан овые не успели появиться. В перерывах между волнами, например - в таком случае игроку засчитает победу,
-            //Хотя враги продолжат спавниться. И лучше вынести логику "Сколько врагов осталось в живых" в отедьный класс.
-            aliveEnemiesList.Add(enemiesInWave[0].MyEnemyData);
-            
             enemiesInWave.RemoveAt(0);
+
             yield return new WaitForSeconds(defaultEnemyStartInterval);
         }
 
@@ -72,9 +54,18 @@ public class EnemyMoveStarter : MonoBehaviour
         StartWave();
     }
 
+    private void CreateAliveEnemiesList()
+    {
+        List<EnemyData> aliveEnemiesList = new List<EnemyData>();
+
+
+    }
+
     public void SetEnemyWavesList(List<EnemyWave> enemyWavesList)
     {
         enemyWavesToStartList = enemyWavesList;
+        AliveEnemyCounter.SetAliveEnemiesListFromEnemiesWaves(enemyWavesList);
+
         StartCoroutine(StartFirstWaveAfterTimer());
     }
 }
