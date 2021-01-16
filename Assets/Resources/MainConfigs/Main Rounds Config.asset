@@ -30,3 +30,10 @@ MonoBehaviour:
       - enemyType: 1
         amount: 2
       timerToNextWave: 2
+  - waves:
+    - microwaves:
+      - enemyType: 2
+        amount: 1
+      - enemyType: 0
+        amount: 1
+      timerToNextWave: 2

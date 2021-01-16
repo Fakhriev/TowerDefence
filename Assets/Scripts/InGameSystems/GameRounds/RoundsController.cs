@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class RoundsController : MonoBehaviour
 {
@@ -21,8 +20,7 @@ public class RoundsController : MonoBehaviour
 
     private void RestartScene()
     {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        SceneLoader.RestartThisScene();
     }
 
     private IEnumerator HideRoundNumber()
