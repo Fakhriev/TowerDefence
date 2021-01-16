@@ -6,6 +6,7 @@ public class EnemyMoveStarter : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private AliveEnemyCounter AliveEnemyCounter;
+    [SerializeField] private RoundsController RoundsController;
 
     [Header("Default Enemy Move Starter Parametres")]
     [SerializeField] private float defaultStartTimer;
@@ -50,15 +51,9 @@ public class EnemyMoveStarter : MonoBehaviour
 
     private IEnumerator StartFirstWaveAfterTimer()
     {
+        RoundsController.ShowCurrentRoundInUI();
         yield return new WaitForSeconds(defaultStartTimer);
         StartWave();
-    }
-
-    private void CreateAliveEnemiesList()
-    {
-        List<EnemyData> aliveEnemiesList = new List<EnemyData>();
-
-
     }
 
     public void SetEnemyWavesList(List<EnemyWave> enemyWavesList)

@@ -71,7 +71,7 @@ public class TowerUpgrade : MonoBehaviour
             sellCost = (int)(Tower.MyTowerData.BuildCost / 2) + sellUpgradesCost;
         }
 
-        Debug.Log($"Build Cost: {Tower.MyTowerData.BuildCost}. Calculated Sell Cost: {sellCost}");
+        //Debug.Log($"Build Cost: {Tower.MyTowerData.BuildCost}. Calculated Sell Cost: {sellCost}");
     }
 
     private void SetupShootingPosition()

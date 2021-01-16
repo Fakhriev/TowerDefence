@@ -10,30 +10,21 @@ public class EnemySpawner : MonoBehaviour
     [Header("References")]
     [SerializeField] private MovePoints MovePoints;
     [SerializeField] private EnemyMoveStarter EnemyMoveStarter;
+    [SerializeField] private RoundsController RoundsController;
 
     [Header("Enemy Spawn Components")]
     [SerializeField] private Transform spawnedEnemiesTransform;
-    [SerializeField] private GameRoundsConfig_SO gameRoundsConfigSO;
     [SerializeField] private EnemyData_SO[] enemiesData = new EnemyData_SO[0];
 
     private Round currentRound;
 
-    private void Awake()
+    private void Start()
     {
-        if(PlayerPrefs.HasKey("Round") == true)
-        {
-            //TODO
-            currentRound = gameRoundsConfigSO.Rounds[0];
-        }
-        else
-        {
-            currentRound = gameRoundsConfigSO.Rounds[0];
-        }
-
+        currentRound = RoundsController.GetCurrentRound();
         SpawnEnemiesPull();
     }
 
-    private void SpawnEnemiesPull()
+    public void SpawnEnemiesPull()
     {
         Round round = currentRound;
         List<EnemyWave> enemyWavesList = new List<EnemyWave>();
