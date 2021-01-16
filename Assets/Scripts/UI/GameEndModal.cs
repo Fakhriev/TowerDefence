@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class GameEndModal : MonoBehaviour
@@ -15,6 +16,11 @@ public class GameEndModal : MonoBehaviour
     [SerializeField] private GameObject looseModal;
     [SerializeField] private Button btnAgainLoose;
 
+    private IEnumerator ShowLooseModalAfterTimer()
+    {
+        yield return new WaitForSeconds(1);
+        looseModal.SetActive(true);
+    }
 
     public void OpenWinModal()
     {
@@ -26,8 +32,7 @@ public class GameEndModal : MonoBehaviour
 
     public void OpenLooseModal()
     {
-        looseModal.SetActive(true);
-
+        StartCoroutine(ShowLooseModalAfterTimer());
         btnAgainLoose.onClick.AddListener(RoundsController.AgainThisRound);
     }
 }

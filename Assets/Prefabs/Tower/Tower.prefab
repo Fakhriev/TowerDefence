@@ -175,6 +175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TowerUpgrade: {fileID: 3020387295916281206}
+  TowerTargetSystem: {fileID: 8962465479709435555}
+  TowerAttack: {fileID: 6875411250824158563}
   towerComponents:
     boxCollider: {fileID: 5171196242220447272}
     meshParent: {fileID: 3670505369385903810}
@@ -209,8 +211,6 @@ MonoBehaviour:
   defaultArrowPrefab: {fileID: 951803934838427668, guid: 4c1bc505da0c4854597432ca3e24e8a9, type: 3}
   arrowsPull: {fileID: 8084610181293176802}
   arrowsInPull: 10
-  currentEnemyTarget: {fileID: 0}
-  needToAttack: 0
 --- !u!1 &5874465506044678908
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,3 +396,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TowerAttack: {fileID: 6875411250824158563}
   sphereCollider: {fileID: 7634761300698701573}
+  enemiesInRange: []
+  currentEnemyTarget: {fileID: 0}

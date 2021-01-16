@@ -9,8 +9,8 @@ public class TowerTargetSystem : MonoBehaviour
     [Header("Target System Components")]
     [SerializeField] private SphereCollider sphereCollider;
 
-    public List<GameObject> enemiesInRange = new List<GameObject>();
-    public Enemy currentEnemyTarget;
+    private List<GameObject> enemiesInRange = new List<GameObject>();
+    private Enemy currentEnemyTarget;
 
     private void OnTriggerEnter(Collider collider)
     {

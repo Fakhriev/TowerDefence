@@ -50,9 +50,8 @@ public enum EnemyType
 public class EnemyStats
 {
     [SerializeField] private int health;
-
     [SerializeField] private float speed;
-    [SerializeField] private float damagePerSecond;
+    [SerializeField] private int damagePerSecond;
 
     [SerializeField] private int goldForKill;
 
@@ -72,7 +71,7 @@ public class EnemyStats
         }
     }
 
-    public float DamagePerSecond
+    public int DamagePerSecond
     {
         get
         {

@@ -340,6 +340,7 @@ GameObject:
   - component: {fileID: 1316914612131749049}
   - component: {fileID: 1178043610690540659}
   - component: {fileID: 3976540642552783957}
+  - component: {fileID: 7585759680064055582}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -425,6 +426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyMovement: {fileID: 1178043610690540659}
   EnemyHealth: {fileID: 3976540642552783957}
+  EnemyAttack: {fileID: 7585759680064055582}
   boxCollider: {fileID: 5257027061775952792}
   meshPrefabParent: {fileID: 3168661332172284887}
   defaultComponents:
@@ -445,6 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 1316914612131749049}
+  EnemyAttack: {fileID: 7585759680064055582}
 --- !u!114 &3976540642552783957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,6 +458,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e8ffe2693e043846bc9c46d3381eeae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 1316914612131749049}
+--- !u!114 &7585759680064055582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403019362463161143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a215ac4248c76be4ab1cd8fcdb10eff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 1316914612131749049}

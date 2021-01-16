@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EnemyMoveStarter : MonoBehaviour
@@ -13,12 +14,17 @@ public class EnemyMoveStarter : MonoBehaviour
     [SerializeField] private float defaultEnemyStartInterval;
     [SerializeField] private float defaultWaveInterval;
 
+    [Header("Waves Thins")]
+    [SerializeField] private GameObject waveUIElement;
+    [SerializeField] private TextMeshProUGUI tmpWaveNumber;
+
     private List<EnemyWave> enemyWavesToStartList;
 
     private int currentWave;
 
     private void StartWave()
     {
+        tmpWaveNumber.text = $"{currentWave + 1}/{enemyWavesToStartList.Count}";
         StartCoroutine(WaveEnemiesStarter());
     }
 
@@ -51,8 +57,14 @@ public class EnemyMoveStarter : MonoBehaviour
 
     private IEnumerator StartFirstWaveAfterTimer()
     {
+        yield return new WaitForSeconds(1);
         RoundsController.ShowCurrentRoundInUI();
+
         yield return new WaitForSeconds(defaultStartTimer);
+
+        currentWave = 0;
+        waveUIElement.SetActive(true);
+
         StartWave();
     }
 

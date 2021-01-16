@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     [Header("References")]
     [SerializeField] private EnemyMovement EnemyMovement;
     [SerializeField] private EnemyHealth EnemyHealth;
+    [SerializeField] private EnemyAttack EnemyAttack;
 
     [Header("Enemy Components")]
     [SerializeField] private BoxCollider boxCollider;
@@ -41,7 +42,7 @@ public class Enemy : MonoBehaviour
     {
         EnemyMovement.SetupSpeed(myEnemyData.EnemyStats.Speed);
         EnemyHealth.SetEnemyhealth(myEnemyData.EnemyStats.Health);
-        //EnemyAttack.SetEnemyDamage(myEnemyData.EnemyStats.DamagePerSecond); TODO
+        EnemyAttack.SetEnemyDamage(myEnemyData.EnemyStats.DamagePerSecond);
     }
 
     private void EnemyDie()

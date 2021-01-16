@@ -5,6 +5,8 @@ public class GameEndEvents : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameEndModal GameEndModal;
 
+    private bool gameEnded;
+
     public static GameEndEvents Instance { get { return instance; } }
     private static GameEndEvents instance;
 
@@ -23,6 +25,9 @@ public class GameEndEvents : MonoBehaviour
 
     private void GameEnd(GameEndType gameEndType)
     {
+        if (gameEnded == true)
+            return;
+
         switch (gameEndType)
         {
             case GameEndType.Win:
@@ -33,6 +38,8 @@ public class GameEndEvents : MonoBehaviour
                 GameEndModal.OpenLooseModal();
                 break;
         }
+
+        gameEnded = true;
     }
 
     public static void InvokeOnGameEndEvent(GameEndType gameEndType)

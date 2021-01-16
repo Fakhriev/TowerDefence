@@ -4,12 +4,34 @@ public class Tower : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private TowerUpgrade TowerUpgrade;
+    [SerializeField] private TowerTargetSystem TowerTargetSystem;
+    [SerializeField] private TowerAttack TowerAttack;
 
     [Header("Tower Components")]
     [SerializeField] private TowerComponents towerComponents;
 
     private TowerData myTowerData;
     private Foundation myFoundation;
+
+    private void Start()
+    {
+        GameEndEvents.Instance.OnGameEnd += GameEnd;
+    }
+
+    private void GameEnd(GameEndType gameEndType)
+    {
+        if(gameEndType == GameEndType.Loose)
+        {
+            TowerTargetSystem.enabled = false;
+            TowerTargetSystem.gameObject.SetActive(false);
+            TowerAttack.StopShooting();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        GameEndEvents.Instance.OnGameEnd -= GameEnd;
+    }
 
     public void SetupTower(TowerData towerData, Foundation foundation)
     {

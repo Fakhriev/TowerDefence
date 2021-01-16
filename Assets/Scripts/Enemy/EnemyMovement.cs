@@ -5,6 +5,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Enemy Enemy;
+    [SerializeField] private EnemyAttack EnemyAttack;
 
     private Animator animator;
     private float speed;
@@ -17,6 +18,7 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         Enemy.OnDie += EnemyDie;
+        GameEndEvents.Instance.OnGameEnd += EnemyWin;
     }
 
     private void Update()
@@ -35,7 +37,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (movePointsArray[nextMovePoint.index].type == MovePointType.FinishPoint)
         {
-            StopEnemy(EnemyAnimationTrigger.Attack);
+            EnemyStartAttack();
             return;
         }
 
@@ -49,10 +51,23 @@ public class EnemyMovement : MonoBehaviour
         animator.SetTrigger(animTrigger.ToString());
     }
 
+    private void EnemyStartAttack()
+    {
+        StopEnemy(EnemyAnimationTrigger.Attack);
+        EnemyAttack.StartAttack();
+    }
+
     private void EnemyDie()
     {
         Enemy.OnDie -= EnemyDie;
+        GameEndEvents.Instance.OnGameEnd -= EnemyWin;
+
         StopEnemy(EnemyAnimationTrigger.Die);
+    }
+
+    private void EnemyWin(GameEndType gameEndType)
+    {
+        StopEnemy(EnemyAnimationTrigger.Victory);
     }
 
     public void SetupMovePoints(MovePoint[] movePoints)
@@ -85,5 +100,6 @@ public class EnemyMovement : MonoBehaviour
 public enum EnemyAnimationTrigger
 {
     Attack,
-    Die
+    Die,
+    Victory
 }

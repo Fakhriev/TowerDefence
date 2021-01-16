@@ -8,13 +8,11 @@ public class GoldController : MonoBehaviour
     [SerializeField] private TowerUpgradeEvents TowerUpgradeEvents;
     [SerializeField] private EnemyKillEvents EnemyKillEvents;
 
-    [Header("Gold Controller Parametres")]
-    [SerializeField] private int startGold;
-
     [Header("TMP")]
     [SerializeField] private TextMeshProUGUI TMP_Gold;
     [SerializeField] private string afterGoldSymbol;
 
+    private int startGold;
     private int gold;
 
     public static GoldController Instance { get { return instance; } }
@@ -31,7 +29,6 @@ public class GoldController : MonoBehaviour
     private void Start()
     {
         SubscribeAtEvents();
-
         SetupStartGold();
     }
 
@@ -40,6 +37,11 @@ public class GoldController : MonoBehaviour
         OnGoldValueChanged += NewGoldValue;
         TowerBuildEvents.OnTowerBuild += TakeGoldForBuild;
         EnemyKillEvents.OnEnemyDie += AddGoldForEnemy;
+    }
+    private void SetupStartGold()
+    {
+        gold = startGold;
+        OnGoldValueChanged(gold);
     }
 
     private void TakeGoldForBuild(TowerData towerData)
@@ -59,10 +61,9 @@ public class GoldController : MonoBehaviour
         TMP_Gold.text = $"{gold}{afterGoldSymbol}";
     }
 
-    public void SetupStartGold()
+    public void SetStartGoldValue(int startGold)
     {
-        gold = startGold;
-        OnGoldValueChanged(gold);
+        this.startGold = startGold;
     }
 
     public void TakeGoldForUpgrade(int upgradeCost)
