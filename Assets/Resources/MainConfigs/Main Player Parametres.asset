@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Main Player Parametres
   m_EditorClassIdentifier: 
   health: 100
-  gold: 200
+  gold: 250

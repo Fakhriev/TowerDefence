@@ -59,7 +59,7 @@ public class RoundsController : MonoBehaviour
 
     public void ShowCurrentRoundInUI()
     {
-        tmpRoundNum.text = $"{roundText} {currentRoundIndex}";
+        tmpRoundNum.text = $"{roundText} {currentRoundIndex + 1}";
         RoundNumberAnimator.SetTrigger("RoundNumberAppear");
 
         StartCoroutine(HideRoundNumber());
