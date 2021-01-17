@@ -44,9 +44,10 @@ public class Arrow : MonoBehaviour
         HitTheTarget();
     }
 
-    public void SetTarget(Enemy enemyTarget)
+    public void SetTarget(Enemy enemyTarget, int damage)
     {
         this.enemyTarget = enemyTarget;
+        this.damage = damage;
 
         isMovingToTarget = true;
         meshParent.SetActive(true);

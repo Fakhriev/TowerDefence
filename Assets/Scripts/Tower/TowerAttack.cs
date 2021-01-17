@@ -54,7 +54,7 @@ public class TowerAttack : MonoBehaviour
         {
             Arrow arrow = Array.Find(arrowPull, arrowInPull => arrowInPull.IsReady() == true);
             arrow.transform.position = shootingPosition.position;
-            arrow.SetTarget(currentEnemyTarget);
+            arrow.SetTarget(currentEnemyTarget, damage);
         }
         else
         {
@@ -63,11 +63,20 @@ public class TowerAttack : MonoBehaviour
         }
     }
 
+    private void UpdateAttackSpeed()
+    {
+        CancelInvoke();
+        SetTarget(currentEnemyTarget);
+    }
 
     public void SetAttacksSpeedAndDamage(float attacksInSecond, int attackDamage)
     {
         attackSpeed = 1 / attacksInSecond;
         damage = attackDamage;
+
+        if (currentEnemyTarget != null)
+            UpdateAttackSpeed();
+
         //Debug.Log($"My attack speed is {attackSpeed}. Attacks in second: {attacksInSecond}");
     }
 
