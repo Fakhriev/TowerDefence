@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,12 +11,19 @@ public class BuildMenu : MonoBehaviour
     [SerializeField] private Button btnTower3;
     [SerializeField] private Button btnTower4;
 
+    [Header("TMP Costs")]
+    [SerializeField] private TextMeshProUGUI tmpTower1Cost;
+    [SerializeField] private TextMeshProUGUI tmpTower2Cost;
+    [SerializeField] private TextMeshProUGUI tmpTower3Cost;
+    [SerializeField] private TextMeshProUGUI tmpTower4Cost;
+
     [Header("Towers Data SO")]
     [SerializeField] private TowerData_SO[] towersDataArray;
 
     private void Start()
     {
         SubscribeAtButtons();
+        UpdateBuildCostTexts();
 
         GoldController.Instance.OnGoldValueChanged += UpdateButtonsInteracteble;
     }
@@ -49,6 +57,14 @@ public class BuildMenu : MonoBehaviour
         btnTower2.interactable = playerGold >= Array.Find(towersDataArray, TD => TD.TowerData.Type == TowerTypes.Tower2).TowerData.BuildCost;
         btnTower3.interactable = playerGold >= Array.Find(towersDataArray, TD => TD.TowerData.Type == TowerTypes.Tower3).TowerData.BuildCost;
         btnTower4.interactable = playerGold >= Array.Find(towersDataArray, TD => TD.TowerData.Type == TowerTypes.Tower4).TowerData.BuildCost;
+    }
+
+    private void UpdateBuildCostTexts()
+    {
+        tmpTower1Cost.text = Array.Find(towersDataArray, TD => TD.TowerData.Type == TowerTypes.Tower1).TowerData.BuildCost.ToString();
+        tmpTower2Cost.text = Array.Find(towersDataArray, TD => TD.TowerData.Type == TowerTypes.Tower2).TowerData.BuildCost.ToString();
+        tmpTower3Cost.text = Array.Find(towersDataArray, TD => TD.TowerData.Type == TowerTypes.Tower3).TowerData.BuildCost.ToString();
+        tmpTower4Cost.text = Array.Find(towersDataArray, TD => TD.TowerData.Type == TowerTypes.Tower4).TowerData.BuildCost.ToString();
     }
 
     private void OnEnable()

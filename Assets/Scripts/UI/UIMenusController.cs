@@ -24,6 +24,14 @@ public class UIMenusController : MonoBehaviour
         upgradeMenu.gameObject.SetActive(false);
     }
 
+    private Vector3 GetMenuScreenPosition(Vector3 worldPosition)
+    {
+        Vector3 screenPosition = mainCamera.WorldToScreenPoint(worldPosition);
+        screenPosition.z = 0;
+
+        return screenPosition;
+    }
+
     public void OpenBuildMenu(Vector3 position)
     {
         if (buildMenu == null)
@@ -32,13 +40,7 @@ public class UIMenusController : MonoBehaviour
             return;
         }
 
-        if(buildMenu.transform.position == mainCamera.WorldToScreenPoint(position))
-        {
-            //Debug.Log("BuildMenu position already on it.");
-            //return;
-        }
-
-        buildMenu.transform.position = mainCamera.WorldToScreenPoint(position);
+        buildMenu.transform.position = GetMenuScreenPosition(position);
         buildMenu.gameObject.SetActive(true);
     }
 
@@ -50,14 +52,8 @@ public class UIMenusController : MonoBehaviour
             return;
         }
 
-        if (upgradeMenu.transform.position == mainCamera.WorldToScreenPoint(position))
-        {
-            //Debug.Log("UpgradeMenu position already on it.");
-            //return;
-        }
-
         upgradeMenu.SetUpgradeData(upgradeCost, isTowerMaxLevel);
-        upgradeMenu.transform.position = mainCamera.WorldToScreenPoint(position);
+        upgradeMenu.transform.position = GetMenuScreenPosition(position);
         upgradeMenu.gameObject.SetActive(true);
     }    
 
