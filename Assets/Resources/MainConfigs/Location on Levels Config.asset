@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63f26edd1c1c465429d78ae61ce6ea04, type: 3}
-  m_Name: _Location on Levels Config
+  m_Name: Location on Levels Config
   m_EditorClassIdentifier: 
   locationOnLevels:
   - fromLevel: 0
@@ -21,4 +21,4 @@ MonoBehaviour:
     locationPrefab: {fileID: 3328899996824800682, guid: 44abafeab696dfe4ba783dce577d4f68, type: 3}
   - fromLevel: 10
     toLevel: 14
-    locationPrefab: {fileID: 3328899996824800682, guid: 44abafeab696dfe4ba783dce577d4f68, type: 3}
+    locationPrefab: {fileID: 3328899996824800682, guid: 335d9809042ea4e46b5a0f0d8c4c7998, type: 3}
