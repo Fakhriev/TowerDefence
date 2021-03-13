@@ -4,6 +4,7 @@ public class Arrow : MonoBehaviour
 {
     [Header("Arrow Componnents")]
     [SerializeField] private GameObject meshParent;
+    [SerializeField] private TrailRenderer trailRenderer;
 
     [Header("Arrow Parametres")]
     [SerializeField] private float forwardFlySpeed;
@@ -37,6 +38,8 @@ public class Arrow : MonoBehaviour
 
         isMovingToTarget = false;
         meshParent.SetActive(false);
+
+        trailRenderer.enabled = false;
     }
 
     public void ForceHit()
@@ -51,6 +54,9 @@ public class Arrow : MonoBehaviour
 
         isMovingToTarget = true;
         meshParent.SetActive(true);
+
+        trailRenderer.enabled = true;
+        trailRenderer.Clear();
     }
 
     public void SetArrow(TowerAttack towerAttack, int damage)

@@ -55,12 +55,220 @@ MonoBehaviour:
       timerToNextWave: 2
   - waves:
     - microwaves:
-      - enemyType: 2
-        amount: 5
+      - enemyType: 1
+        amount: 4
       timerToNextWave: 2
+  - waves:
+    - microwaves:
+      - enemyType: 1
+        amount: 4
+      timerToNextWave: 2
+  - waves:
     - microwaves:
       - enemyType: 0
-        amount: 5
+        amount: 4
+      - enemyType: 2
+        amount: 2
+      timerToNextWave: 4
+    - microwaves:
+      - enemyType: 1
+        amount: 3
+      timerToNextWave: 5
+    - microwaves:
+      - enemyType: 0
+        amount: 3
+      - enemyType: 2
+        amount: 2
       - enemyType: 1
         amount: 1
-      timerToNextWave: 2
+      timerToNextWave: 4
+  - waves:
+    - microwaves:
+      - enemyType: 0
+        amount: 4
+      - enemyType: 2
+        amount: 2
+      timerToNextWave: 4
+    - microwaves:
+      - enemyType: 1
+        amount: 3
+      timerToNextWave: 5
+    - microwaves:
+      - enemyType: 0
+        amount: 3
+      - enemyType: 2
+        amount: 2
+      - enemyType: 1
+        amount: 1
+      timerToNextWave: 4
+  - waves:
+    - microwaves:
+      - enemyType: 0
+        amount: 4
+      - enemyType: 2
+        amount: 2
+      timerToNextWave: 4
+    - microwaves:
+      - enemyType: 1
+        amount: 3
+      timerToNextWave: 5
+    - microwaves:
+      - enemyType: 0
+        amount: 3
+      - enemyType: 2
+        amount: 2
+      - enemyType: 1
+        amount: 1
+      timerToNextWave: 4
+  - waves:
+    - microwaves:
+      - enemyType: 0
+        amount: 4
+      - enemyType: 2
+        amount: 2
+      timerToNextWave: 4
+    - microwaves:
+      - enemyType: 1
+        amount: 3
+      timerToNextWave: 5
+    - microwaves:
+      - enemyType: 0
+        amount: 3
+      - enemyType: 2
+        amount: 2
+      - enemyType: 1
+        amount: 1
+      timerToNextWave: 4
+  - waves:
+    - microwaves:
+      - enemyType: 0
+        amount: 4
+      - enemyType: 2
+        amount: 2
+      timerToNextWave: 4
+    - microwaves:
+      - enemyType: 1
+        amount: 3
+      timerToNextWave: 5
+    - microwaves:
+      - enemyType: 0
+        amount: 3
+      - enemyType: 2
+        amount: 2
+      - enemyType: 1
+        amount: 1
+      timerToNextWave: 4
+  - waves:
+    - microwaves:
+      - enemyType: 0
+        amount: 4
+      - enemyType: 2
+        amount: 2
+      timerToNextWave: 4
+    - microwaves:
+      - enemyType: 1
+        amount: 3
+      timerToNextWave: 5
+    - microwaves:
+      - enemyType: 0
+        amount: 3
+      - enemyType: 2
+        amount: 2
+      - enemyType: 1
+        amount: 1
+      timerToNextWave: 4
+  - waves:
+    - microwaves:
+      - enemyType: 0
+        amount: 4
+      - enemyType: 2
+        amount: 2
+      timerToNextWave: 4
+    - microwaves:
+      - enemyType: 1
+        amount: 3
+      timerToNextWave: 5
+    - microwaves:
+      - enemyType: 0
+        amount: 3
+      - enemyType: 2
+        amount: 2
+      - enemyType: 1
+        amount: 1
+      timerToNextWave: 4
+  - waves:
+    - microwaves:
+      - enemyType: 0
+        amount: 4
+      - enemyType: 2
+        amount: 2
+      timerToNextWave: 4
+    - microwaves:
+      - enemyType: 1
+        amount: 3
+      timerToNextWave: 5
+    - microwaves:
+      - enemyType: 0
+        amount: 3
+      - enemyType: 2
+        amount: 2
+      - enemyType: 1
+        amount: 1
+      timerToNextWave: 4
+  - waves:
+    - microwaves:
+      - enemyType: 0
+        amount: 4
+      - enemyType: 2
+        amount: 2
+      timerToNextWave: 4
+    - microwaves:
+      - enemyType: 1
+        amount: 3
+      timerToNextWave: 5
+    - microwaves:
+      - enemyType: 0
+        amount: 3
+      - enemyType: 2
+        amount: 2
+      - enemyType: 1
+        amount: 1
+      timerToNextWave: 4
+  - waves:
+    - microwaves:
+      - enemyType: 0
+        amount: 4
+      - enemyType: 2
+        amount: 2
+      timerToNextWave: 4
+    - microwaves:
+      - enemyType: 1
+        amount: 3
+      timerToNextWave: 5
+    - microwaves:
+      - enemyType: 0
+        amount: 3
+      - enemyType: 2
+        amount: 2
+      - enemyType: 1
+        amount: 1
+      timerToNextWave: 4
+  - waves:
+    - microwaves:
+      - enemyType: 0
+        amount: 4
+      - enemyType: 2
+        amount: 2
+      timerToNextWave: 4
+    - microwaves:
+      - enemyType: 1
+        amount: 3
+      timerToNextWave: 5
+    - microwaves:
+      - enemyType: 0
+        amount: 3
+      - enemyType: 2
+        amount: 2
+      - enemyType: 1
+        amount: 1
+      timerToNextWave: 4
