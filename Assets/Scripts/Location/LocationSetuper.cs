@@ -36,12 +36,12 @@ public class LocationSetuper : MonoBehaviour
     {
         if ( Array.Exists(locationOnLevelsArray, locOnLevels => locOnLevels.IsLevelInThisLocationRange(level) == true) )
         {
-            Debug.Log($"Location on level [{level}] Exist.");
+            //Debug.Log($"Location on level [{level}] Exist.");
             return Array.Find(locationOnLevelsArray, locOnLevels => locOnLevels.IsLevelInThisLocationRange(level) == true);
         }
         else
         {
-            Debug.Log($"Location on level [{level}] NOT Exist.");
+            //Debug.Log($"Location on level [{level}] NOT Exist.");
             return GetLastLocationInArray(locationOnLevelsArray);
         }
     }
