@@ -31,7 +31,7 @@ public class TowerUpgradeEvents : MonoBehaviour
     private void OpenUpgradeMenu(TowerUpgradeData towerUpgradeData)
     {
         this.towerUpgradeData = towerUpgradeData;
-        UIMenusController.OpenUpgradeMenu(towerUpgradeData.TowerToUpgrade.transform.position, towerUpgradeData.UpgradeCost, towerUpgradeData.IsTowerMaxLevel);
+        UIMenusController.OpenUpgradeMenu(towerUpgradeData.TowerToUpgrade.transform.position, towerUpgradeData.UpgradeCost, towerUpgradeData.SellCost, towerUpgradeData.IsTowerMaxLevel);
         
         //Debug.Log("TowerUpgradeEvents: OpenUpgradeMenu");
     }

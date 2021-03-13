@@ -44,7 +44,7 @@ public class UIMenusController : MonoBehaviour
         buildMenu.gameObject.SetActive(true);
     }
 
-    public void OpenUpgradeMenu(Vector3 position, int upgradeCost, bool isTowerMaxLevel)
+    public void OpenUpgradeMenu(Vector3 position, int upgradeCost, int sellCost, bool isTowerMaxLevel)
     {
         if(upgradeMenu == null)
         {
@@ -52,7 +52,7 @@ public class UIMenusController : MonoBehaviour
             return;
         }
 
-        upgradeMenu.SetUpgradeData(upgradeCost, isTowerMaxLevel);
+        upgradeMenu.SetUpgradeData(upgradeCost, sellCost, isTowerMaxLevel);
         upgradeMenu.transform.position = GetMenuScreenPosition(position);
         upgradeMenu.gameObject.SetActive(true);
     }    
