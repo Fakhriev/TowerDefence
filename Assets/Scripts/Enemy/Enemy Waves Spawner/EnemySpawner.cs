@@ -8,7 +8,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject EnemyPrefab;
 
     [Header("References")]
-    [SerializeField] private MovePoints MovePoints;
     [SerializeField] private EnemyMoveStarter EnemyMoveStarter;
     [SerializeField] private RoundsController RoundsController;
 
@@ -16,10 +15,13 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform spawnedEnemiesTransform;
     [SerializeField] private EnemyData_SO[] enemiesData = new EnemyData_SO[0];
 
+    private MovePoints MovePoints;
     private Round currentRound;
 
-    private void Start()
+    public void PrepareToSpwanEnemyPull(MovePoints MovePoints)
     {
+        this.MovePoints = MovePoints;
+
         currentRound = RoundsController.GetCurrentRound();
         SpawnEnemiesPull();
     }

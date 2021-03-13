@@ -29,31 +29,33 @@ public class RoundsController : MonoBehaviour
         RoundNumberAnimator.SetTrigger("RoundNumberDisappear");
     }
 
-    public Round GetCurrentRound()
+    public int GetCurrentRoundIndex()
     {
-        Round value = new Round();
         int roundIndex = 0;
 
-        if (PlayerPrefs.HasKey(playerPrefsIndex) == true)
+        if(PlayerPrefs.HasKey(playerPrefsIndex) == true)
         {
             roundIndex = PlayerPrefs.GetInt(playerPrefsIndex);
-            int lastCreatedRoundIndex = gameRoundsConfigSO.Rounds.Length - 1;
-
-            if (roundIndex > lastCreatedRoundIndex)
-            {
-                value = gameRoundsConfigSO.Rounds[lastCreatedRoundIndex];
-            }
-            else
-            {
-                value = gameRoundsConfigSO.Rounds[roundIndex];
-            }
-        }
-        else
-        {
-            value = gameRoundsConfigSO.Rounds[0];
         }
 
         currentRoundIndex = roundIndex;
+        return roundIndex;
+    }
+
+    public Round GetCurrentRound()
+    {
+        Round value = new Round();
+        int lastCreatedRoundIndex = gameRoundsConfigSO.Rounds.Length - 1;
+
+        if (currentRoundIndex > lastCreatedRoundIndex)
+        {
+            value = gameRoundsConfigSO.Rounds[lastCreatedRoundIndex];
+        }
+        else
+        {
+            value = gameRoundsConfigSO.Rounds[currentRoundIndex];
+        }
+
         return value;
     }
 
